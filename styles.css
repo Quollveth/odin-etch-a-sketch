@@ -1,0 +1,56 @@
+/* GENERAL */
+
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+body, html{
+    background-color: #F5F5F5;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+}
+
+.container{
+    display: grid;
+    grid-template-columns: 0.5fr 2.5fr;
+    grid-template-rows: 100vh;
+}
+
+/* UI SECTION */
+
+.ui-sec{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 5px 0 15px #5f5f5f;
+}
+
+p{
+    margin-top: 15px;
+    text-align: center;
+}
+
+.title{
+    font-weight: 500;
+    font-size: 25px;
+    color: #333333;
+}
+
+.subtitle{
+    font-size: 15px;
+    color: #666666;
+}
+
+.mid{
+    margin-top: 50px;
+    display: flex;
+    gap: 15px;
+}
+
+.active{
+    background-color: #b9b9b9;
+}
+
+/* GRID SECTION */
+
