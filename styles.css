@@ -20,10 +20,15 @@ body, html{
 /* UI SECTION */
 
 .ui-sec{
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    justify-items: center;
     align-items: center;
+    grid-template-rows: repeat(8, 1fr);
     box-shadow: 5px 0 15px #5f5f5f;
+}
+
+.top{
+    grid-row: 0/2;
 }
 
 p{
@@ -45,11 +50,25 @@ p{
 .mid{
     margin-top: 50px;
     display: flex;
-    gap: 15px;
+    gap: 20px;
+    grid-row: 2/3;
 }
+
 
 .active{
     background-color: #b9b9b9;
+}
+
+.bot{
+    display: flex;
+    flex-direction: column;
+    grid-row: 6/8;
+}
+
+#drawColor{
+    margin-top: 5px;
+    height: 150px;
+    width: 150px;
 }
 
 /* GRID SECTION */
@@ -67,7 +86,7 @@ p{
     display: grid;
 }
 
-.cell{
+.cellBorder{
     border: 1px solid #2d2d2d;
 }
 

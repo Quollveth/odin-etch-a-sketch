@@ -17,12 +17,17 @@
                 <p class="subtitle">Relax and draw on</p>
             </div>
             <div class="ui mid">
-                <button onclick="drawClick()" title="Draw" class="ui-btn draw"><img width="30px" src="imgs/pencil-svgrepo-com.svg" alt="Draw"></button>
+                <button onclick="drawClick()" title="Draw" class="ui-btn draw active"><img width="30px" src="imgs/pencil-svgrepo-com.svg" alt="Draw"></button>
                 <button onclick="eraseClick()" title="Erase" class="ui-btn erase"><img width="30px" src="imgs/eraser-svgrepo-com.svg" alt="Erase"></button>
                 <button onclick="wipeClick()" title="Wipe" class="ui-btn wipe"><img width="30px" src="imgs/broom-svgrepo-com.svg" alt="Wipe"style="scale:-1 1;"></button>
-                <button onclick="gridClick()" title="Change grid size" class="ui-btn grid"><img width="30px" src="imgs/grid-svgrepo-com.svg" alt="Grid Size"></button>
+                <button onclick="gridClick()" title="Grid Borders" class="ui-btn grid active"><img width="30px" src="imgs/grid-svgrepo-com.svg" alt="grid"style="scale:-1 1;"></button>
             </div>
             <div class="ui bot">
+                <p class="subtitle">Drawing Color</p>
+                <input type="color" value="#000000" name="drawColor" id="drawColor">
+                <p class="subtitle">Grid Size</p>
+                <input type="range" min="4" max="50" value="16" name="gridSize" id="gridSize">
+                <p class="subtitle" id="gridSizeText">16 x 16</p>
             </div>
         </section>
         <section class="grid-sec">

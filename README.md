@@ -7,7 +7,8 @@ Made by Klaus "Quollveth"
 
 Credits:
 Icons from www.svgrepo.com
-Pencil by Umar Irshad
-Eraser by Themify
-Broom by Radhika Paghdal
-Grid by Lucide
+    Pencil by Umar Irshad
+    Eraser by Themify
+    Broom by Radhika Paghdal
+    Grid by Lucide
+Font from Google Fonts - Poppins by Indian Type Foundry, Jonny Pinhorn 
