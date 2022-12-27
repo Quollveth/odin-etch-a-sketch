@@ -54,3 +54,23 @@ p{
 
 /* GRID SECTION */
 
+.grid-sec{
+    display: flex;
+    align-items: center;
+    margin-left: 80px;
+}
+
+.grid-container{
+    border: 2px solid black;
+    height: 600px;
+    width: 600px;
+    display: grid;
+}
+
+.cell{
+    border: 1px solid #2d2d2d;
+}
+
+.cellHover{
+    background-color: #b9b9b9;
+}
