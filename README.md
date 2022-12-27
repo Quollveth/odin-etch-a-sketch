@@ -11,4 +11,5 @@ Icons from www.svgrepo.com
     Eraser by Themify
     Broom by Radhika Paghdal
     Grid by Lucide
+    Rainbows by joypixels
 Font from Google Fonts - Poppins by Indian Type Foundry, Jonny Pinhorn 

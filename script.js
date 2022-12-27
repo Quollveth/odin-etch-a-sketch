@@ -2,10 +2,12 @@
 const drawBtn = document.querySelector('.draw');
 const eraseBtn = document.querySelector('.erase');
 const gridBtn = document.querySelector('.grid');
+const rainbowBtn = document.querySelector('.rainbowImg');
 const gridContainer = document.querySelector('.grid-container');
 const gridSizeSlider = document.getElementById('gridSize');
 const gridSizeText = document.getElementById('gridSizeText');
 const colorInput = document.getElementById('drawColor');
+
 
 //VARIABLES
 let activeTool = 'draw';
@@ -14,6 +16,7 @@ let currentColor = '#000000';
 let nCells;
 let mouseDown = false;
 let bordersActive = true;
+let rainbowActive = false;
 colorInput.value = currentColor;
 
 //EVENT LISTENERS
@@ -56,10 +59,7 @@ function drawGrid(size = 16){ //DRAWS THE GRID
             e.target.classList.remove('cellHover');
         });
         currentElement.addEventListener('mousemove',(e)=>{
-            cellClick(e.target); //it didn't work when calling the cellClick function directly in the addEventListener for some reason
-        });
-        currentElement.addEventListener('clicked',(e)=>{
-            cellClick(e.target);
+            cellClick(e.target,`#${((1 << 24) * Math.random() | 0).toString(16).padStart(6, "0")}`); //it didn't work when calling the cellClick function directly in the addEventListener for some reason, that weird part generates a random color, i found it on stackoverflow
         });
         gridContainer.appendChild(currentElement);
     }
@@ -101,11 +101,27 @@ function gridClick(){
     }
 }
 
-//CLICKED ON A CELL
-function cellClick(cell){
+function rainbowClick(){
+    if(rainbowActive){
+        rainbowActive = false;
+        rainbowBtn.src = 'imgs/rainbow-svgrepo-com(2).svg';
+    } else {
+        rainbowActive = true;
+        rainbowBtn.src = 'imgs/rainbow-svgrepo-com.svg';
+    }
+}
+
+//clicked on a cell
+function cellClick(cell,rColor){
     if(mouseDown){
         if(activeTool == 'draw'){
-            cell.style.backgroundColor = `${currentColor}`;
+            if(rainbowActive){
+                cell.style.backgroundColor = rColor;
+                colorInput.value = rColor;
+                currentColor = rColor;
+            } else {
+                cell.style.backgroundColor = `${currentColor}`;
+            }            
         } else {
             cell.style.backgroundColor = '#F5F5F5';
         }
