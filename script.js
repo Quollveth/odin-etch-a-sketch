@@ -17,6 +17,7 @@ let nCells;
 let mouseDown = false;
 let bordersActive = true;
 let rainbowActive = false;
+let previousCell = null;
 colorInput.value = currentColor;
 
 //EVENT LISTENERS
@@ -61,6 +62,9 @@ function drawGrid(size = 16){ //DRAWS THE GRID
         currentElement.addEventListener('mousemove',(e)=>{
             cellClick(e.target,`#${((1 << 24) * Math.random() | 0).toString(16).padStart(6, "0")}`); //it didn't work when calling the cellClick function directly in the addEventListener for some reason, that weird part generates a random color, i found it on stackoverflow
         });
+        currentElement.addEventListener('dragstart', e => {
+            e.preventDefault();
+          });
         gridContainer.appendChild(currentElement);
     }
     gridContainer.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
@@ -82,6 +86,7 @@ function eraseClick(){
 
 function wipeClick(){
     drawGrid(size);
+    previousCell = null;
 }
 
 function gridClick(){
@@ -114,16 +119,21 @@ function rainbowClick(){
 //clicked on a cell
 function cellClick(cell,rColor){
     if(mouseDown){
-        if(activeTool == 'draw'){
-            if(rainbowActive){
-                cell.style.backgroundColor = rColor;
-                colorInput.value = rColor;
-                currentColor = rColor;
-            } else {
-                cell.style.backgroundColor = `${currentColor}`;
-            }            
+        if(cell.id == previousCell){
+            //do nothing
         } else {
-            cell.style.backgroundColor = '#F5F5F5';
+            previousCell = cell.id;
+            if(activeTool == 'draw'){
+                if(rainbowActive){
+                    cell.style.backgroundColor = rColor;
+                    colorInput.value = rColor;
+                    currentColor = rColor;
+                } else {
+                    cell.style.backgroundColor = `${currentColor}`;
+                }            
+            } else {
+                cell.style.backgroundColor = '#F5F5F5';
+            }
         }
     }
 }
