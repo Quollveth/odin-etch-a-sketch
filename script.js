@@ -60,7 +60,10 @@ function drawGrid(size = 16){ //DRAWS THE GRID
             e.target.classList.remove('cellHover');
         });
         currentElement.addEventListener('mousemove',(e)=>{
-            cellClick(e.target,`#${((1 << 24) * Math.random() | 0).toString(16).padStart(6, "0")}`); //it didn't work when calling the cellClick function directly in the addEventListener for some reason, that weird part generates a random color, i found it on stackoverflow
+            cellClick(e.target); //it didn't work when calling the cellClick function directly in the addEventListener for some reason
+        });
+        currentElement.addEventListener('click',(e)=>{
+            cellClick(e.target,true); //same as before
         });
         currentElement.addEventListener('dragstart', e => {
             e.preventDefault();
@@ -117,26 +120,23 @@ function rainbowClick(){
 }
 
 //clicked on a cell
-function cellClick(cell,rColor){
-    if(mouseDown){
+function cellClick(cell,clicked = false){
+    if(mouseDown || clicked){
         if(cell.id == previousCell){
             //do nothing
         } else {
             previousCell = cell.id;
             if(activeTool == 'draw'){
                 if(rainbowActive){
-                    cell.style.backgroundColor = rColor;
-                    colorInput.value = rColor;
-                    currentColor = rColor;
-                } else {
-                    cell.style.backgroundColor = `${currentColor}`;
-                }            
+                    currentColor = `#${((1 << 24) * Math.random() | 0).toString(16).padStart(6, "0")}`;
+                    colorInput.value = currentColor;
+                }
+                cell.style.backgroundColor = `${currentColor}`;
             } else {
                 cell.style.backgroundColor = '#F5F5F5';
             }
         }
     }
 }
-
 //INITIALIZE THE PROGRAM
 drawGrid(size);
